@@ -1,0 +1,35 @@
+{
+  "name": "pbf-schema",
+  "version": "0.0.0",
+  "description": "Protocol Buffer Schema parser",
+  "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de)",
+  "license": "MIT",
+  "keywords": [
+    "pbf",
+    "protobuf",
+    "protocol",
+    "buffer",
+    "parser"
+  ],
+  "main": "lib/schema.js",
+  "dependencies": {},
+  "devDependencies": {
+    "matcha": "~0.7.0",
+    "mocha": "~3.1.2"
+  },
+  "homepage": "https://github.com/jhermsmeier/node-pbf-schema",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhermsmeier/node-pbf-schema.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jhermsmeier/node-pbf-schema/issues"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "benchmark": "matcha",
+    "test": "mocha --ui tdd"
+  }
+}
