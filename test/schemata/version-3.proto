@@ -7,10 +7,16 @@ enum EnumAllowingAlias {
   option allow_alias = true;
   UNKNOWN = 0;
   STARTED = 1;
+  // NOTE: Field options can also be set in square brackets,
+  // i.e. to deprecate a field `[deprecated=true]`.
   RUNNING = 2 [(custom_option) = "hello world"];
 }
 
 message outer {
+  // NOTE: Here we have defined a new message-level option
+  // When we then use the option, the option name must be
+  // enclosed in parentheses to indicate that it is an extension.
+  // In this case `my_option` is also a message, hence the field reference.
   option (my_option).a = true;
   message inner {
     int64 ival = 1;
@@ -18,4 +24,21 @@ message outer {
   repeated inner inner_message = 2;
   EnumAllowingAlias enum_field =3;
   map<int32, string> my_map = 4;
+}
+
+message ReservedFields {
+  // NOTE: you can't mix field names and tag numbers in the same reserved statement.
+  reserved 2, 15, 9 to 11;
+  reserved "foo", "bar";
+}
+
+message SampleMessage {
+  oneof test_oneof {
+    string name = 4;
+    SubMessage sub_message = 9;
+  }
+}
+
+service SearchService {
+  rpc Search (SearchRequest) returns (SearchResponse);
 }
